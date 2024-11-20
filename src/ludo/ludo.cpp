@@ -6,27 +6,27 @@
 #include <ctime> // for time()
 #include <string>
 
-//returns the fieldNo of the given palyer's piece
-int Ludo::getField(Color p, int pieceNo) {
-    return players[p][pieceNo].position;
+// returns the field of the given player's piece
+int Ludo::getField(Color player, int piece) {
+  return players[player][piece].position;
 }
 
-//returns if the number rolled allows for an extra roll
+// returns if the roll allows for an extra roll
 bool Ludo::extraRoll(int rolled) {
   return rolled == 6;
 }
 
-//returns if the field f is empty
-bool Ludo::fieldFree(int f) {
-  return board[f] == NULL;
+// returns if the field is empty
+bool Ludo::fieldFree(int field) {
+  return board[field] == NULL;
 }
 
-//returns if the field is at start position
-bool Ludo::start(Color player, int pieceNo) {
-  return (getField(player, pieceNo) == 0);
+// returns if the field is at start position
+bool Ludo::start(Color player, int piece) {
+  return (getField(player, piece) == 0);
 }
 
-//returns if player is at newField
+// returns if player is at newField
 bool Ludo::samePlayer(Color player, int newField) {
   return (board[newField]->color == player);
 }
@@ -67,11 +67,11 @@ Ludo::Ludo() {
         board[i]= NULL;
     }
     //opret spillernes brikker (og placer dem hjemme)
-    for (int pl = 0; pl < NUM_PLAYERS; pl++) {
-        for (int pieces = 0; pieces < NUM_PIECES; pieces++) {
-            players[pl][pieces].color = (Color)pl;
-            players[pl][pieces].position = 0;
-            players[pl][pieces].no = pieces;
+    for (int player = 0; player < NUM_PLAYERS; player++) {
+        for (int piece = 0; piece < NUM_PIECES; piece++) {
+            players[player][piece].color = (Color)player;
+            players[player][piece].position = 0;
+            players[player][piece].id = piece;
         }
     }
     //initialiser random generatoren
@@ -81,6 +81,7 @@ Ludo::Ludo() {
 // Metode til at flytte en brik. Returnerer om der er ekstra slag
 bool Ludo::move(Color player, int pieceNo, int rolled) {
     int newField = getField(player, pieceNo) + rolled;
+    std::cout << "NEW FIELD: " << newField << std::endl;
     bool extra = extraRoll(rolled);
 
     if (newField >= BOARD_SIZE) {
@@ -147,7 +148,7 @@ void Ludo::display() {
     for (int p = RED; p <= BLUE; p++) {
       for (int i = 0; i < NUM_PIECES; i++) {
         if (players[p][i].position == 0) {
-            std::cout << colorToString(players[p][i].color) << players[p][i].no << ",";
+            std::cout << colorToString(players[p][i].color) << players[p][i].id << ",";
         }
       }
     }
@@ -156,7 +157,7 @@ void Ludo::display() {
     for (int p = RED; p <= BLUE; p++) {
         for (int i = 0; i < NUM_PIECES; i++) {
             if (players[p][i].position == BOARD_SIZE-1) {
-                std::cout << colorToString(players[p][i].color) << players[p][i].no << "|";
+                std::cout << colorToString(players[p][i].color) << players[p][i].id << "|";
             }
         }
     }
@@ -168,7 +169,7 @@ void Ludo::display() {
             std::cout << "  ";
         }
         else {
-            std::cout << colorToString(board[i]->color) << board[i]->no;
+            std::cout << colorToString(board[i]->color) << board[i]->id;
         }
     }
     std::cout << std::endl << std::endl;

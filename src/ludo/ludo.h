@@ -1,7 +1,7 @@
 #include <string>
 
-static const int BOARD_SIZE = 41;
-static const int NUM_PIECES = 4;
+static const int BOARD_SIZE = 24;
+static const int NUM_PIECES = 3;
 static const int NUM_PLAYERS = 4;
 
 enum Color { RED, YELLOW, GREEN, BLUE };
@@ -9,14 +9,14 @@ enum Color { RED, YELLOW, GREEN, BLUE };
 struct Piece {
   Color color;
   int position;
-  int no;
+  int id;
 };
 
 
 class Ludo {
   public:
     Ludo();
-    bool move(Color player, int pieceNo, int rolled);
+    bool move(Color player, int id, int rolled);
     bool won();
     int roll();
     void display();

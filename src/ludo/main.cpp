@@ -3,21 +3,31 @@
 
 void prompt(Color, int);
 
+int selectPiece() {
+  int input;
+  while (true) {
+    std::cin >> input;
+    if(input >= 0 && input < NUM_PIECES) {
+      return input;
+    }
+  }
+}
+
 int main() {
   
   Ludo game;
   Color currentPlayer = RED;
-  
+  int roll = game.roll();
   while (!game.won()) {
     game.display();
-    int roll = game.roll(), fieldToMove;
+    roll = game.roll();
     prompt(currentPlayer, roll);
-    std::cin >> fieldToMove;
-    while (game.move(currentPlayer, fieldToMove, roll)) {
+    int selectedPiece = selectPiece();
+    while (game.move(currentPlayer, selectedPiece, roll)) {
       game.display();
       roll = game.roll();
       prompt(currentPlayer, roll);
-      std::cin >> fieldToMove;
+      selectedPiece = selectPiece();
     }
     currentPlayer = (Color)((currentPlayer + 1) % NUM_PLAYERS);
   }
