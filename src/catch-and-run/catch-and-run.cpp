@@ -1,37 +1,33 @@
-#include "catch_and_run.h"
+#include "catch-and-run.h"
 
 #include <iostream>
 #include <vector>
-#include <cstdlib> // for rand() og srand()
-#include <ctime>   // for time()
+#include <cstdlib>
+#include <ctime>
 #include <string>
 
-// returns the field of the given player's piece
-int Ludo::getField(Color player, int piece) {
+// returns the field for a given player's piece
+int CatchAndRun::getField(Color player, int piece) {
   return players[player][piece].position;
 }
 
-// returns if the roll allows for an extra roll
-bool Ludo::extraRoll(int rolled) {
+bool CatchAndRun::extraRoll(int rolled) {
   return rolled == 6;
 }
 
-// returns if the field is empty
-bool Ludo::fieldFree(int field) {
+bool CatchAndRun::isFieldFree(int field) {
   return board[field] == NULL;
 }
 
-// returns if the field is at start position
-bool Ludo::start(Color player, int piece) {
+bool CatchAndRun::isPieceAtStart(Color player, int piece) {
   return (getField(player, piece) == 0);
 }
 
-// returns if player is at newField
-bool Ludo::samePlayer(Color player, int newField) {
+bool CatchAndRun::isSamePlayer(Color player, int newField) {
   return (board[newField]->color == player);
 }
 
-std::string Ludo::colorToString(Color c) {
+std::string CatchAndRun::colorToString(Color c) {
   switch (c) {
   case RED:
     return "R";
@@ -45,7 +41,7 @@ std::string Ludo::colorToString(Color c) {
   return "NA";
 }
 
-Ludo::Ludo() {
+CatchAndRun::CatchAndRun() {
   // Der er ingen brikker på spillepladen (alle er på position 0)
   for (int i = 0; i < BOARD_SIZE; i++) {
     board[i] = NULL;
@@ -63,7 +59,7 @@ Ludo::Ludo() {
 }
 
 // Metode til at flytte en brik. Returnerer om der er ekstra slag
-bool Ludo::move(Color player, int pieceNo, int rolled) {
+bool CatchAndRun::move(Color player, int pieceNo, int rolled) {
   int newField = getField(player, pieceNo) + rolled;
   std::cout << "NEW FIELD: " << newField << std::endl;
   bool extra = extraRoll(rolled);
@@ -78,9 +74,9 @@ bool Ludo::move(Color player, int pieceNo, int rolled) {
     return extra;
   }
 
-  if (fieldFree(newField)) {
+  if (isFieldFree(newField)) {
     // felt ledigt, flyt brik herhen
-    if (start(player, pieceNo)) {
+    if (isPieceAtStart(player, pieceNo)) {
       board[newField] = &players[player][pieceNo]; // opdater til at pege på spillers brik
     } else {
       board[newField] = board[getField(player, pieceNo)]; // sæt ny position til at pege på brikken
@@ -88,9 +84,9 @@ bool Ludo::move(Color player, int pieceNo, int rolled) {
     }
     players[player][pieceNo].position = newField; // opdater positionen hos spilleren
   } else { // der står noget på pladsen
-    if (!samePlayer(player, newField)) {                                // slå anden spillers brik hjem
+    if (!isSamePlayer(player, newField)) {                                // slå anden spillers brik hjem
       board[newField]->position = 0; // flyt anden spillers brik hjem
-      if (start(player, pieceNo)) {
+      if (isPieceAtStart(player, pieceNo)) {
         board[newField] = &players[player][pieceNo]; // opdater til at pege på spillers brik
       } else {
         board[newField] = board[getField(player, pieceNo)]; // sæt ny position til at pege på brikken
@@ -102,8 +98,7 @@ bool Ludo::move(Color player, int pieceNo, int rolled) {
   return extra;
 }
 
-// er der en spiller som har vundet
-bool Ludo::won() {
+bool CatchAndRun::won() {
   bool winner = false;
   for (int p = RED; p <= BLUE; p++) {
     int noHome = 0;
@@ -120,12 +115,12 @@ bool Ludo::won() {
   return winner;
 }
 
-int Ludo::roll() {
+int CatchAndRun::roll() {
   return (rand() % 6) + 1;
 }
 
 // udskriver spillepladen
-void Ludo::display() {
+void CatchAndRun::display() {
   // Udskriv dem som er på start
   std::cout << std::endl << "Pieces @ start\t";
   for (int p = RED; p <= BLUE; p++) {

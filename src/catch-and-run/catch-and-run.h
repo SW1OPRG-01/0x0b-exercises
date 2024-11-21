@@ -13,9 +13,9 @@ struct Piece {
 };
 
 
-class Ludo {
+class CatchAndRun {
   public:
-    Ludo();
+    CatchAndRun();
     bool move(Color player, int id, int rolled);
     bool won();
     int roll();
@@ -26,9 +26,9 @@ class Ludo {
     Piece players[NUM_PLAYERS][NUM_PIECES];
     int getField(Color player, int piece);
     bool extraRoll(int rolled);
-    bool fieldFree(int f);
-    bool start(Color player, int piece);
-    bool samePlayer(Color player, int nextField);
+    bool isFieldFree(int f);
+    bool isPieceAtStart(Color player, int piece);
+    bool isSamePlayer(Color player, int nextField);
     bool sendHome(int field);
     void sendRandomToHome(Color player);
 };

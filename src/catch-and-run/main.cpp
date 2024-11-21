@@ -1,5 +1,5 @@
 #include <iostream>
-#include "catch_and_run.h"
+#include "catch-and-run.h"
 
 void prompt(Color, int);
 
@@ -15,7 +15,7 @@ int selectPiece() {
 
 int main() {
   
-  Ludo game;
+  CatchAndRun game;
   Color currentPlayer = RED;
   int roll = game.roll();
   while (!game.won()) {
@@ -35,5 +35,5 @@ int main() {
 }
 
 void prompt(Color currentPlayer, int roll) {
-  std::cout << Ludo::colorToString(currentPlayer) << " rolled " << roll << std::endl << "What piece do you want to move? (1-3): ";
+  std::cout << CatchAndRun::colorToString(currentPlayer) << " rolled " << roll << std::endl << "What piece do you want to move? (1-3): ";
 }
