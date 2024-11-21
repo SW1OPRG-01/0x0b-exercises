@@ -8,7 +8,7 @@
       "args": [
         "-g",
         "-std=c++11",
-        "src/*.cpp",
+        "${fileDirname}/*.cpp",
         "-o",
         "${workspaceFolder}/build/${workspaceFolderBasename}.out"
       ],
