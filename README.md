@@ -34,7 +34,6 @@ The rules are as follows:
 - If a piece lands on a position where another color piece is already present, the other piece is sent back to the starting position (square 0).
 - A piece cannot be moved, if there is already a piece of the same color in the position it wants to move to (if the player tries, the piece remains in place).
 - A player may roll the die again, if they roll a 6.
-- If a piece lands on a specific position on the game board, it must send a random opponent's piece back to the starting position.
 - A piece has "home" when it lands on square 24. The last position must be hit "precisely" (i.e., the roll must match so that it lands on position 24). If there is only one piece left and the roll means that the piece "goes past" square 24, the piece is not moved.
 - If there are situations not covered by the above, decide for yourself what the rule should be - and remember to document it.
 

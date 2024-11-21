@@ -7,8 +7,8 @@ int selectPiece() {
   int input;
   while (true) {
     std::cin >> input;
-    if(input >= 0 && input < NUM_PIECES) {
-      return input;
+    if(input >= 1 && input <= NUM_PIECES) {
+      return input - 1;
     }
   }
 }
@@ -35,5 +35,5 @@ int main() {
 }
 
 void prompt(Color currentPlayer, int roll) {
-  std::cout << Ludo::colorToString(currentPlayer) << " rolled " << roll << std::endl << "What piece do you want to move? (0-3): ";
+  std::cout << Ludo::colorToString(currentPlayer) << " rolled " << roll << std::endl << "What piece do you want to move? (1-3): ";
 }

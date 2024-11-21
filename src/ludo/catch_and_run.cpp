@@ -31,26 +31,6 @@ bool Ludo::samePlayer(Color player, int newField) {
   return (board[newField]->color == player);
 }
 
-// returns if the field if a field where a random opponent's piece if sent home
-bool Ludo::sendHome(int field) {
-  return (field % 10 == 0);
-}
-
-// sends a random other players piece to home
-void Ludo::sendRandomToHome(Color player) {
-  int otherPlayer = rand() % 4;
-  while (otherPlayer == player) {
-    otherPlayer = rand() % 4;
-  }
-  // nu er der en anden tilfældig spiller valgt
-  int p = rand() % 4; // tilfældig brik
-  if (!start((Color)otherPlayer, p)) { // brikken ikke på start
-    Piece *other = board[getField((Color)otherPlayer, p)];
-    board[getField((Color)otherPlayer, p)] = NULL;
-    other->position = 0;
-  }
-}
-
 std::string Ludo::colorToString(Color c) {
   switch (c) {
   case RED:
@@ -75,7 +55,7 @@ Ludo::Ludo() {
     for (int piece = 0; piece < NUM_PIECES; piece++) {
       players[player][piece].color = (Color)player;
       players[player][piece].position = 0;
-      players[player][piece].id = piece;
+      players[player][piece].id = piece + 1;
     }
   }
   // initialiser random generatoren
@@ -99,9 +79,6 @@ bool Ludo::move(Color player, int pieceNo, int rolled) {
   }
 
   if (fieldFree(newField)) {
-    if (sendHome(player)) {
-      sendRandomToHome(player);
-    }
     // felt ledigt, flyt brik herhen
     if (start(player, pieceNo)) {
       board[newField] = &players[player][pieceNo]; // opdater til at pege på spillers brik
