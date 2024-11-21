@@ -46,7 +46,7 @@ The game must have at least four methods:
 - `won()`: Is there a player who has won?
 
 **_Challenge tasks_**
-- Refactor the proposed solution, so that there are three classes: A Piece, a Game Board, and a Player. The Player has a name that can be printed out when the game is played. The Game Board contains a series of pieces placed on squares, and can move a piece to a given square. A piece can have a color.
+- Refactor the proposed solution (find it @ [Github](https://github.com/SW1OPRG-01/0x0b-exercises/tree/solution)), so that there are three classes: A Piece, a Game Board, and a Player. The Player has a name that can be printed out when the game is played. The Game Board contains a series of pieces placed on squares, and can move a piece to a given square. A piece can have a color.
 - Expand the Ludo game so that there can be up to four pieces on each square (of the same color). The following additional rules should apply:
   - If there is one or more pieces of the same color as the player who rolls, the piece can be placed there.
   - If there are two or more pieces of a different color, send the piece home.
