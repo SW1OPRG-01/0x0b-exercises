@@ -1,4 +1,4 @@
-#include "ludo.h"
+#include "catch_and_run.h"
 
 #include <iostream>
 #include <vector>
@@ -53,10 +53,14 @@ void Ludo::sendRandomToHome(Color player) {
 
 std::string Ludo::colorToString(Color c) {
     switch (c) {
-      case RED: return "R";
-      case YELLOW: return"Y";
-      case GREEN: return "G";
-      case BLUE: return "B";
+      case RED: 
+        return "R";
+      case YELLOW: 
+        return"Y";
+      case GREEN: 
+        return "G";
+      case BLUE: 
+        return "B";
     }
     return"NA";
 }

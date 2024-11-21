@@ -1,5 +1,5 @@
 #include <iostream>
-#include "ludo.h"
+#include "catch_and_run.h"
 
 void prompt(Color, int);
 
