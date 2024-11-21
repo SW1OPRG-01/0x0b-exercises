@@ -29,15 +29,15 @@ Your class should have a number of members and methods that take into account th
 
 The rules are as follows:
 - A piece can have one of four colors: Red, Yellow, Green, or Blue.
-- A player is Red, Yellow, Green, or Blue and has three pieces in this color (e.g. an integer in the range of 0 to 2).
+- A player is Red, Yellow, Green, or Blue and has three pieces in this color (e.g. an integer in the range of 1 to 3).
 - A piece has a position on the game board, which can be an integer in the range of 0 to 24.
 - There can be at most one piece per position on the game board, except position 0, which is the starting position and position 24, which is "home" (the piece has reached the goal).
-- A piece can be moved by rolling a die (i.e., a number between 1 and 6). If the die shows a certain number, the piece can be moved the number of squares corresponding to the number. When rolled, the player chooses which piece to move (0-2).
+- A piece can be moved by rolling a die (i.e., a number between 1 and 6). If the die shows a certain number, the piece can be moved the number of squares corresponding to the number. When rolled, the player chooses which piece to move (1-3).
 - If a piece lands on a position where another color piece is already present, the other piece is sent back to the starting position (square 0).
 - A piece cannot be moved, if there is already a piece of the same color in the position it wants to move to (if the player tries, the piece remains in place).
 - A player may roll the die again, if they roll a 6.
 - A piece has "home" when it lands on square 24. The last position must be hit "precisely" (i.e., the roll must match so that it lands on position 24). If there is only one piece left and the roll means that the piece "goes past" square 24, the piece is not moved.
-- If there are situations not covered by the above, decide for yourself what the rule should be - and remember to document it.
+- If there are situations not covered by the above, decide for yourself what the rule should be - and remember to document it (by extending the specification).
 
 The game must have at least four methods:
 - `print()`: Prints the game board indicating which pieces are where
