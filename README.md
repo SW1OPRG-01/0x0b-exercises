@@ -15,13 +15,15 @@ The class `Amount` should be able to:
 You should follow the STREAM process, that is, follow the individual steps and always make sure that your code can be compiled. Before you start the process, it might be a good idea to draw a UML diagram for the `Amount` class (note that you have not yet decided on what attributes the class should have, so that part of the class will be empty).
 
 ## Exercise 0x10 – The board game of `Catch & Run`
-This exercise is a bit larger than usual as it should illustrate the STREAM process. You must complete the task by following the different steps in the process, so that you end up having implemented the entire class.
+This exercise is a bit larger than usual, as it should illustrate the STREAM process. You must complete the exercise by following the steps in the STREAM process, so that you end up having implemented the entire solution.
 
-It is very important that you do it in small steps. The proposed solution contains roughly 250 lines of code (with comments), something that cannot (should not) be done in one go. 
+It's very important, that you do it in small incremental steps. The proposed solution contains roughly 250 lines of code (comments included), so it's something that cannot (should not) be done in "one go". 
 
-Use the wish fairy as much as you can - if you want something to do something, find out what needs to be known to figure it out (i.e., the parameters to the private method) and what you want to return (i.e., the return type from the private method). Create the method with an "empty" implementation and use it. Test and can later return to implement the private method.
+Use the "wish fairy" as much as you can - if you want to do something, find out what needs to be known to figure it out (i.e., method parameters, helper methods) and what you want to achieve (i.e., the return type from the private method). Create the method with an "empty" implementation and use it. Test to make sure everything still compiles, and then return to implement the private method.
 
-You should program a class in C++ that represents a called "Catch & Run". The game is a simplified version of the well-known game Ludo, where players move their pieces around a game board by rolling a die. You should NOT create a graphical interface, but an option to print the game board on the screen.
+You should program a class in C++ that represents a game called "Catch & Run". 
+
+The game is a simplified version of the well-known game Ludo, where players move their pieces on a game board by rolling a die. You shall NOT create a graphical interface, but a mechanism to print the game board on the terminal.
 
 Your class should have a number of members and methods that take into account the different rules that apply to Catch & Run.
 
@@ -43,7 +45,7 @@ The game must have at least four methods:
 - `move(player, pieceNr, roll)`: Takes a player (red, yellow, green, or blue), which piece is desired to be moved, and what is rolled and moves the player's specified piece according to the rules above
 - `won()`: Is there a player who has won?
 
-Challenge tasks
+**_Challenge tasks_**
 - Refactor the proposed solution, so that there are three classes: A Piece, a Game Board, and a Player. The Player has a name that can be printed out when the game is played. The Game Board contains a series of pieces placed on squares, and can move a piece to a given square. A piece can have a color.
 - Expand the Ludo game so that there can be up to four pieces on each square (of the same color). The following additional rules should apply:
   - If there is one or more pieces of the same color as the player who rolls, the piece can be placed there.
